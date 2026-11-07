@@ -1,0 +1,195 @@
+/* =====================================================================
+   MiTienda — Sistema de diseño global
+   ---------------------------------------------------------------------
+   Paleta:
+   - Marca (índigo #4338CA): confianza y tecnología. Contraste 7.9:1 con
+     blanco, cumple WCAG AA/AAA en botones y textos.
+   - Acento (rosa #E11D48): ofertas y urgencia. Solo para descuentos y
+     contadores, para que no compita con el botón principal.
+   - Éxito / Advertencia / Error: estados de stock, envío y formularios.
+   - Neutros slate: fondos claros y texto con buen contraste.
+   ===================================================================== */
+
+:root {
+  /* Marca */
+  --brand-50: #EEF2FF;
+  --brand-100: #E0E7FF;
+  --brand-200: #C7D2FE;
+  --brand-500: #6366F1;
+  --brand-600: #4F46E5;
+  --brand-700: #4338CA;
+  --brand-800: #3730A3;
+  --brand-900: #1E1B4B;
+
+  /* Acento (ofertas) */
+  --accent: #E11D48;
+  --accent-600: #BE123C;
+  --accent-50: #FFF1F2;
+
+  /* Estados */
+  --success: #15803D;
+  --success-50: #F0FDF4;
+  --warning: #B45309;
+  --warning-50: #FFFBEB;
+  --danger: #B91C1C;
+  --danger-50: #FEF2F2;
+
+  /* Neutros */
+  --ink: #0F172A;
+  --ink-2: #334155;
+  --muted: #64748B;
+  --border: #E2E8F0;
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
+
+  /* Forma y profundidad */
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-full: 999px;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, .06);
+  --shadow: 0 8px 24px rgba(15, 23, 42, .08);
+  --shadow-lg: 0 24px 60px rgba(15, 23, 42, .18);
+
+  --container: 1200px;
+  --font: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4 { line-height: 1.2; margin: 0; letter-spacing: -.02em; }
+p { margin: 0; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--brand-500); outline-offset: 2px; border-radius: 6px; }
+
+/* ---------- Layout ---------- */
+.container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 1.25rem; }
+.section { padding: 3.5rem 0; }
+.section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.section-head h2 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 800; }
+.eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--brand-700); }
+.muted { color: var(--muted); }
+.link { color: var(--brand-700); font-weight: 700; display: inline-flex; align-items: center; gap: .35rem; }
+.link:hover { text-decoration: underline; }
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .72rem 1.25rem; border-radius: var(--radius-full);
+  border: 1.5px solid transparent; font-weight: 700; font-size: .95rem;
+  cursor: pointer; white-space: nowrap; text-align: center;
+  transition: background .2s, color .2s, border-color .2s, box-shadow .2s, transform .15s var(--ease);
+}
+.btn:active:not(:disabled) { transform: scale(.97); }
+.btn:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+.btn-primary { background: var(--brand-700); color: #fff; box-shadow: 0 6px 16px rgba(67, 56, 202, .28); }
+.btn-primary:hover:not(:disabled) { background: var(--brand-800); }
+.btn-accent { background: var(--accent); color: #fff; box-shadow: 0 6px 16px rgba(225, 29, 72, .25); }
+.btn-accent:hover:not(:disabled) { background: var(--accent-600); }
+.btn-outline { background: var(--surface); color: var(--ink); border-color: var(--border); }
+.btn-outline:hover:not(:disabled) { border-color: var(--brand-500); color: var(--brand-700); }
+.btn-light { background: #fff; color: var(--brand-900); }
+.btn-light:hover:not(:disabled) { background: var(--brand-50); }
+.btn-ghost { background: transparent; color: var(--ink-2); }
+.btn-ghost:hover:not(:disabled) { background: var(--brand-50); color: var(--brand-700); }
+.btn-lg { padding: .95rem 1.6rem; font-size: 1rem; }
+.btn-sm { padding: .45rem .9rem; font-size: .85rem; }
+.btn-block { width: 100%; }
+
+.icon-btn {
+  position: relative; display: inline-grid; place-items: center;
+  width: 44px; height: 44px; border-radius: var(--radius-full);
+  border: none; background: transparent; color: var(--ink); cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.icon-btn:hover { background: var(--brand-50); color: var(--brand-700); }
+
+/* ---------- Badges y chips ---------- */
+.badge { display: inline-flex; align-items: center; gap: .25rem; padding: .25rem .6rem; border-radius: var(--radius-full); font-size: .74rem; font-weight: 800; line-height: 1.3; }
+.badge-sale { background: var(--accent); color: #fff; }
+.badge-warn { background: var(--warning-50); color: var(--warning); }
+.badge-muted { background: var(--ink); color: #fff; }
+.badge-success { background: var(--success-50); color: var(--success); }
+.badge-brand { background: var(--brand-50); color: var(--brand-700); }
+
+.chip {
+  display: inline-flex; align-items: center; gap: .35rem;
+  padding: .4rem .8rem; border-radius: var(--radius-full);
+  border: 1px solid var(--brand-200); background: var(--brand-50); color: var(--brand-800);
+  font-size: .85rem; font-weight: 600; cursor: pointer;
+}
+.chip:hover { background: var(--brand-100); }
+
+/* ---------- Formularios ---------- */
+.field { display: flex; flex-direction: column; gap: .35rem; }
+.field label { font-size: .875rem; font-weight: 600; color: var(--ink-2); }
+.input {
+  width: 100%; padding: .75rem .9rem; border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm); background: var(--surface);
+  transition: border-color .2s, box-shadow .2s;
+}
+.input::placeholder { color: #94A3B8; }
+.input:focus { outline: none; border-color: var(--brand-500); box-shadow: 0 0 0 4px var(--brand-100); }
+.input.invalid { border-color: var(--danger); }
+.input.invalid:focus { box-shadow: 0 0 0 4px var(--danger-50); }
+textarea.input { resize: vertical; min-height: 84px; }
+select.input {
+  appearance: none; cursor: pointer; padding-right: 2.4rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right .8rem center;
+}
+.field-error { font-size: .8rem; color: var(--danger); font-weight: 600; }
+
+/* ---------- Paneles ---------- */
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
+
+/* ---------- Grilla de productos ---------- */
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.25rem; }
+@media (max-width: 560px) {
+  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+}
+
+/* ---------- Skeleton (carga) ---------- */
+.skeleton {
+  background: linear-gradient(90deg, #EEF2F7 25%, #F8FAFC 50%, #EEF2F7 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s infinite;
+  border-radius: var(--radius-sm);
+}
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+/* ---------- Estados vacíos ---------- */
+.empty { text-align: center; padding: 4rem 1rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.empty-icon { width: 88px; height: 88px; border-radius: 50%; display: grid; place-items: center; background: var(--brand-50); color: var(--brand-700); }
+.empty h2 { font-size: 1.4rem; }
+.empty p { max-width: 420px; color: var(--muted); }
+
+/* ---------- Resumen de compra ---------- */
+.summary-row { display: flex; justify-content: space-between; gap: 1rem; padding: .4rem 0; color: var(--ink-2); }
+.summary-row.total { border-top: 1px solid var(--border); margin-top: .5rem; padding-top: 1rem; font-size: 1.15rem; font-weight: 800; color: var(--ink); }
+.free { color: var(--success); font-weight: 700; }
+
+/* ---------- Migas de pan ---------- */
+.crumbs { display: flex; align-items: center; gap: .4rem; font-size: .85rem; color: var(--muted); flex-wrap: wrap; }
+.crumbs a:hover { color: var(--brand-700); }
+
+/* ---------- Accesibilidad ---------- */
+.skip-link { position: absolute; left: -999px; top: 0; }
+.skip-link:focus { left: 1rem; top: 1rem; z-index: 100; background: #fff; padding: .5rem 1rem; border-radius: 8px; box-shadow: var(--shadow); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

@@ -1,0 +1,27 @@
+# ---- Archivos de instalación ya aplicados (no son parte del proyecto) ----
+/backend/
+/frontend/
+/actualizacion-v2/
+/instalar.ps1
+*.zip
+
+# ---- Dependencias (se regeneran con composer install / npm install) ----
+vendor/
+node_modules/
+
+# ---- Secretos: NUNCA se suben ----
+.env
+.env.*
+!.env.example
+
+# ---- Compilados y cachés ----
+tienda-web/dist/
+tienda-web/.angular/
+tienda-api/storage/*.key
+*.log
+
+# ---- Sistema / editor ----
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
